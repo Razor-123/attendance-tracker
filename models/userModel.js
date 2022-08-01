@@ -13,6 +13,7 @@ mongoose.connect(db_link)
 const userSchema = mongoose.Schema({
     name:{
         type:String,
+        unique:true,
         required:true
     },
     password:{
@@ -36,10 +37,10 @@ userSchema.pre('save',function(){
     this.confirmPassword = undefined;
 });
 
-userSchema.post('save',function(error,doc,next){
-    if (error && error.name==="MongoServerError" && error.code === 11000) next(new Error('Email/Username is already registered'));
-    else next(error);
-});
+// userSchema.post('save',function(error,doc,next){
+//     if (error && error.name==="MongoServerError" && error.code === 11000) next(new Error('Email/Username is already registered'));
+//     else next(error);
+// });
 
 userSchema.pre(/^find/,function(next){
     this.populate("subjects")
