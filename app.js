@@ -22,7 +22,7 @@ app.use(express.urlencoded({extended:true}))
 app.use('/user',userRouter);
 app.use('/temp',tempRouter);
 
-//app.use(express.static('public'));
+app.use(express.static('public'));
 app.listen(port);
 
 app.get('/',(req,res)=>{
