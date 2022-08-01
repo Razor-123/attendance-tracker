@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const db_link = 'mongodb+srv://shaleen:sallu123@cluster0.sq3e6zs.mongodb.net/?retryWrites=true&w=majority';
+const db_link = require('../secret').db_link;
 
 mongoose.connect(db_link)
     .then(db=>{
