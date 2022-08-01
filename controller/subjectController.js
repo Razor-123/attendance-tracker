@@ -1,7 +1,7 @@
 const subjectModel = require('../models/subjectModel');
 const jwt = require('jsonwebtoken');
 const userModel = require('../models/userModel');
-const JWT_KEY = require('../secret').JWT_KEY;
+const JWT_KEY = require('../secrets/secret').JWT_KEY;
 
 module.exports.addSubject = async function addSubject(req,res){
     try{
