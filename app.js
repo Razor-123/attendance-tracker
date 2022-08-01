@@ -20,7 +20,7 @@ app.use('/temp',tempRouter);
 
 const port = process.env.PORT || 3001;
 const isProduction = process.env.NODE_ENV === "production";
-console.log(process.env);
+//console.log(process.env);
 isProduction && app.use(express.static(path.join(__dirname,"public","build")));
 isProduction &&
   app.get("*", function (request, response) {
