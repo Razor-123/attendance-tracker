@@ -13,7 +13,7 @@ app.use(cors({
 
 const port = process.env.PORT || 3001;
 
-//app.use(express.static('public/build'));
+app.use(express.static('public/build'));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({extended:true}))
