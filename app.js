@@ -25,9 +25,34 @@ app.use('/temp',tempRouter);
 app.use(express.static('public'));
 app.listen(port);
 
-app.get('/',(req,res)=>{
+app.get('/login',(req,res)=>{
     res.json({
         message:"hello world!"
     })
 })
 
+app.get('/signup',(req,res)=>{
+    res.json({
+        message:"hello world!"
+    })
+})
+app.get('/',(req,res)=>{
+    res.json({
+        message:"hello world!"
+    })
+})
+app.get('/addsubject',(req,res)=>{
+    res.json({
+        message:"hello world!"
+    })
+})
+app.get('/subject/:subject_id',(req,res)=>{
+    res.json({
+        message:"hello world!"
+    })
+})
+app.get('/',(req,res)=>{
+    res.json({
+        message:"hello world!"
+    })
+})
