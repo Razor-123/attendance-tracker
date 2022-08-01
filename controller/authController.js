@@ -1,6 +1,6 @@
 const userModel = require('../models/userModel');
 const jwt = require('jsonwebtoken');
-const JWT_KEY = require('../secret').JWT_KEY;
+const JWT_KEY = require('../secrets/secret').JWT_KEY;
 const path = require('path');
 
 // signup user
