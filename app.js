@@ -6,7 +6,7 @@ const tempRouter = require('./Routers/tempRouter');
 const cors = require('cors');
 
 app.use(cors({
-    origin:'http://attend-op.herokuapp.com/',
+    origin:'https://attend-op.herokuapp.com/',
     credentials:true,
 }));
 
