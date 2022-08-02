@@ -6,7 +6,7 @@ Student can also keep track of their current day attendance and get useful feedb
 - Overall attendance stats
 - Daily attendance updates
 ## How to use
-The app is up and running : [Attend-op](https://attend-op.herokuapp.com/)
+The app is up and running : [Attend-op](https://attend-op.herokuapp.com/).
 The user have to provide a unique user name and set a password.
 He/She is then allowed to :
 - Add subjects
