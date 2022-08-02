@@ -14,19 +14,21 @@ const userSchema = mongoose.Schema({
     name:{
         type:String,
         unique:true,
-        required:true
+        required:[true,"Please Enter the Username"]
     },
     password:{
         type:String,
-        required:true,
-        minLength:8
+        required:[true,"Please enter the password"],
+        minLength:[8,"Password length must be eight"]
     },
     confirmPassword:{
         type:String,
-        require:true,
-        minLength:8,
-        validate:function(){
-            return this.confirmPassword == this.password;
+        require:[true,"Please confirm the password"],
+        validate:{
+            validator: function(){
+                return this.confirmPassword == this.password;
+            },
+            message:"Passwords not similar"
         }
     },
     subjects:[{ type : mongoose.Schema.ObjectId, ref: 'subjectModel' }]
@@ -37,10 +39,10 @@ userSchema.pre('save',function(){
     this.confirmPassword = undefined;
 });
 
-// userSchema.post('save',function(error,doc,next){
-//     if (error && error.name==="MongoServerError" && error.code === 11000) next(new Error('Email/Username is already registered'));
-//     else next(error);
-// });
+userSchema.post('save',function(error,doc,next){
+    if (error && error.name==="MongoServerError" && error.code === 11000) next(new Error('Username is already registered'));
+    else next(error);
+});
 
 userSchema.pre(/^find/,function(next){
     this.populate("subjects")

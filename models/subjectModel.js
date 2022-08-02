@@ -13,27 +13,36 @@ mongoose.connect(db_link)
 const subjectSchema = mongoose.Schema({
     name:{
         type:String,
-        required:true
+        required:[true,"Enter Subject Name"]
     },
     total_lec:{
         type:Number,
-        required:true,
-        validate:function(){
-            return this.total_lec <= 1000;
+        required:[true,"Enter Total lectures"],
+        validate:{
+            validator: function(){
+                return this.total_lec <= 1000;
+            },
+            message:"Total Lectures should be less than 1000"
         }
     },
     attended_lec:{
         type:Number,
-        required:true,
-        validate:function(){
-            return this.total_lec >= this.attended_lec;
+        required:[true,"Enter Attended Lectures"],
+        validate:{
+            validator:function(){
+                return this.total_lec >= this.attended_lec;
+            },
+            message:"Attended Lectures are greater than Total Lectures"
         }
     },
     min_per:{
         type:Number,
-        required:true,
-        validate:function(){
-            return this.min_per<=100;
+        required:[true,"Enter Required Attendance"],
+        validate:{
+            validator:function(){
+                return this.min_per<=100 && this.min_per>=0;
+            },
+            message:"Invalid Required Percentage"
         }
     },
     updatedAt:{
@@ -43,15 +52,22 @@ const subjectSchema = mongoose.Schema({
     total_lec_today:{
         type:Number,
         default:0,
-        validate:function(){
-            return this.total_lec_today <= this.total_lec
+        validate:{
+            validator:function(){
+                return this.total_lec_today <= this.total_lec
+            },
+            message:"Todays Lectures can not be greater than Total Lectures"
         }
+        
     },
     attended_lec_today:{
         type:Number,
         default:0,
-        validate:function(){
-            return this.attended_lec_today<=this.attended_lec && this.attended_lec_today<=this.total_lec_today
+        validate:{
+            validator:function(){
+                return this.attended_lec_today<=this.attended_lec && this.attended_lec_today<=this.total_lec_today
+            },
+            message:"Invalid Lectures attended today"
         }
     }
 });
